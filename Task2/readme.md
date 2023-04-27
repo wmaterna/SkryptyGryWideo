@@ -12,4 +12,4 @@ https://www.themealdb.com/api
 
 ## Screenshot
 
-![Alt text](/Screenshot 2023-04-27 at 16.11.13.png?raw=true)
+![Screenshot 2023-04-27 at 16 11 13](https://user-images.githubusercontent.com/73557215/234897859-a140ee2e-4bc2-48a2-a1f9-30be09ab66a3.png)
