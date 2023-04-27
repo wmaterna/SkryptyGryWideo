@@ -2,29 +2,33 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: computer choice
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
   - intent: affirm
-  - action: utter_happy
+  - action: find_dish
+  - action: utter_do_you_like_it
+  - intent: affirm
+  - action: utter_goodbye
 
-- story: sad path 2
+- story: user choice
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
   - intent: deny
+  - action: utter_what_do_you_want_to_eat_then
+  - intent: dish
+  - action: find_dish
+  - action: utter_do_you_like_it
+  - intent: affirm
   - action: utter_goodbye
+
+- story: mixed choice
+  steps:
+  - action: utter_do_you_like_it
+  - intent: deny
+  - action: utter_what_do_you_want_to_eat_then
+  - action: utter_suggest
+  - intent: dish
+  - action: find_dish

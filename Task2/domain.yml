@@ -2,32 +2,53 @@ version: "3.1"
 
 intents:
   - greet
+  - dish
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
+  - suggest
+
+entities: 
+  - choice
+
+slots:
+  choice:
+    type: categorical
+    values: 
+      - pizza
+      - tacos
+      - ramen
+      - sushi
+      - pasta
+    mappings:
+    - type: from_entity
+      entity: choice
 
 responses:
+  utter_do_you_like_it:
+  - text: "Do you like it?"
+
+  utter_chatbot_choice: 
+  - text: 'Do you want me to chose it for you'
+
+  utter_what_do_you_want_to_eat_then:
+  - text: "Ok. So tell me what do you like to eat?"
+
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+  - text: "Hello, I am Foodbot, do you want me to choose your dinner?"
 
   utter_goodbye:
   - text: "Bye"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_suggest:
+  - text: "I am suggesting you one of my favourites: pizza, pasta, burger, sushi, ramen or tacos."
+
+actions:
+  - find_dish
 
 session_config:
   session_expiration_time: 60
