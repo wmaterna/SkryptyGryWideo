@@ -63,15 +63,15 @@ app:get("/products", function()
   return { status = 200, json = products }
 end)
 
-app:get("/categories/:id", json_params(function(self)
-  for k, v in pairs(categories) do
-    if v[1] == tonumber(self.params.id) then
-      return { status = 200, json = v  }
-    else
-      return { status = 404, json = { message = "Category not found" } }
+
+app:get("/categories/:id", function(self)
+  for k, v in pairs(categories) do 
+    if categories[k].id == tonumber(self.params.id) then
+      return { status = 200, json = categories[k] }
     end
   end
-end))
+  return { status = 404, json = { message = "Category not found" } }
+end)
 
 
 app:post("/categories", json_params(function(self)
@@ -86,16 +86,13 @@ app:post("/categories", json_params(function(self)
 end))
 
 app:delete("/categories/:id", function(self)
-  for k, v in pairs(categories) do
-    if v[1] == tonumber(self.params.id) then
-      table.remove(categories, v)
-      return { status = 200, json = v  }
-    else
-      return { status = 404, json = { message = "Category not found" } }
+  for k, v in pairs(categories) do 
+    if categories[k].id == tonumber(self.params.id) then
+      table.remove(categories, k)
+      return { status = 200, json = categories }
     end
   end
+  return { status = 404, json = { message = "Category not found" } }
 end)
-
-
 
 return app
